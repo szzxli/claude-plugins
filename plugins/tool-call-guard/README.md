@@ -91,3 +91,9 @@ leaves your boundary.
   it excludes file paths and common file extensions, but a
   filename that looks exactly like a domain would count as a
   named host.
+
+## Maintenance
+
+This plugin is maintained on a best-effort basis. No SLA is
+promised: issues are triaged weekly, but there is no guaranteed
+response or fix time.
