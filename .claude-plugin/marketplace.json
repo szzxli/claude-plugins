@@ -1,0 +1,1 @@
+{"description":"Plugins for auditing AI coding agents: log every proposed tool call and score it before it runs.","name":"tool-call-guard-marketplace","owner":{"name":"David Lee"},"plugins":[{"description":"Log-only audit trail for Claude Code tool calls (PreToolUse hook + guard scorer).","name":"tool-call-guard","source":"./plugins/tool-call-guard","version":"0.1.0"}]}

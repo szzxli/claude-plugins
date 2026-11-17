@@ -1,0 +1,1 @@
+{"author":{"name":"David Lee","url":"https://verifycites.com"},"description":"Log-only audit trail for Claude Code tool calls: records every proposed call and scores it with the agent-tool-call-guard checker. No enforcement in v0.1.0.","keywords":["audit","security","agent","hooks"],"license":"Apache-2.0","name":"tool-call-guard","version":"0.1.0"}

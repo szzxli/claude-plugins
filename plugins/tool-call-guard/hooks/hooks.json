@@ -1,0 +1,1 @@
+{"hooks":{"PreToolUse":[{"hooks":[{"command":"python3 ${CLAUDE_PLUGIN_ROOT}/hooks/log-call.py","type":"command"}]}],"UserPromptSubmit":[{"hooks":[{"command":"python3 ${CLAUDE_PLUGIN_ROOT}/hooks/log-prompt.py","type":"command"}]}]}}
