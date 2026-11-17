@@ -12,6 +12,10 @@ One plugin so far.
 
 ## Install
 
+These are Claude Code slash commands — run them inside a Claude Code
+session, not in your terminal. In your terminal, type `claude` first
+and wait for the Claude Code prompt, then run:
+
 ```text
 /plugin marketplace add szzxli/claude-plugins
 /plugin install tool-call-guard@tool-call-guard-marketplace
