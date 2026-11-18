@@ -1,5 +1,10 @@
 # tool-call-guard — Claude Code plugin (v0.1.0, log-only)
 
+**This plugin records. It does not protect.** It writes a log of
+proposed tool calls so a human can audit them later. Do not present
+it as a guard, a blocker, or a safety control — the checker behind
+it failed its blind test (see "What v0.1.0 does NOT do" below).
+
 A log-only audit trail for Claude Code tool calls. Every proposed
 tool call is recorded to the project's audit log, in the format
 `guard.py` scores. Nothing is blocked in this version.
@@ -51,9 +56,9 @@ python3 ${CLAUDE_PLUGIN_ROOT}/guard.py <project>/.claude/tool-call-guard/calls.j
 
 `guard.py` is the same checker as the
 [agent-tool-call-guard skill](https://github.com/szzxli/soc-home-lab/tree/add-agent-tool-call-guard/05-soc-skills/skills/agent-tool-call-guard)
-(sha256 `d2d15421…`), frozen for independent validation. It scores
-each proposed call `allow` / `suspicious` / `block` — log-only,
-it never runs a call.
+(sha256 `7e94ff0df06911d010b53680d6d4b28a5debdb770f35fa8adbc18b77a1cd93a0` — re-frozen 2026-11-18 after the failed blind set; see the skill's EVAL.md).
+It scores each proposed call `allow` / `suspicious` / `block` —
+log-only, it never runs a call.
 
 ## Environment variables
 
@@ -76,10 +81,20 @@ leaves your boundary.
   because no user names `api.github.com`. Blocking mode waits
   for a workflow-host mechanism and a measured false-positive
   rate.
-- **No independent validation.** The guard's 100/100 is a
-  self-test on synthetic calls. The second-author blind set
-  has not been run. Do not quote any number from this plugin
-  as production performance.
+- **No validation — the blind set failed.** The guard's 100/100
+  is same-author dev-set calibration only (100 synthetic calls,
+  checker and eval calls written by the same author). The
+  second-author blind set (same team, 40 calls, run 2026-11-18)
+  scored **20/40 exact match (50%)**, below the 80% bar:
+  TP=13, FN=13, FP=4, TN=10. Misses (13) outnumber false
+  positives (4) — a missed call can execute; a false positive
+  is visible and hand-clearable. Until the guard is fixed,
+  re-frozen, and re-tested blind above the bar, there is no
+  validation number to quote, **no paid audit may rest on the
+  guard, and no distribution push may promote it as protection.**
+  A false-negative gate is proposed (not yet decided — see the
+  validation plan): a future blind set must also keep misses at
+  or below the proposed bar.
 - **Claude Code only.** Other agents need their own collectors.
 - **One agent, one session.** The log is what one agent
   proposed in one project. It is evidence, not a benchmark.
